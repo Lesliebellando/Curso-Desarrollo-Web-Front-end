@@ -1,0 +1,56 @@
+* {margin: 0; 
+    padding: 0;
+box-sizing: border-box;}
+
+.header {
+min-height: 100vh;
+padding-top: 100px;
+width: 100%;
+background-size: cover;
+position: relative;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #EAEFEF;
+  color: #333446;
+}
+
+a {color: #333446;
+text-decoration: none;}
+
+.menu h1 {
+  font-size: 30px;
+  font-weight: 500;
+  color: #EAEFEF;
+  margin: 0
+}
+.menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: #7F8CAA ;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 5%;
+  z-index: 100; ;
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+.menu ul li a{
+  font-size: 20px;
+  font-weight: 500;
+  color: #EAEFEF;
+  transition: 0.5s;
+}
+
+.menu ul li a:hover {
+  color: #B8CFCE;
+
+}
