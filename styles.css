@@ -16,21 +16,29 @@ position: relative;
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #EAEFEF;
+  background: linear-gradient(to right, #EEF1DA, #D5E5D5);
   color: #333446;
 }
 
 a {color: #333446;
 text-decoration: none;}
 
+#menu-toggle {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .menu h1 {
   font-size: 30px;
   font-weight: 600;
-  color: #EAEFEF;
+  color: #333446;
   margin: 0
 }
 .menu {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -39,64 +47,58 @@ text-decoration: none;}
   justify-content: space-between;
   align-items: center;
   padding: 0 50px;
-  background-color: rgba(51, 52, 70, 0.8);
+  z-index: 1000;
 }
 
-
-
-.menu ul {
+.nav-links {
   display: flex;
   list-style: none;
   gap: 35px;
+  margin: 0;
+    padding: 0;
 }
-.menu ul li a{
+.nav-links li a{
   font-size: 20px;
   font-weight: 500;
-  color: #EAEFEF;
+  color: #333446;
  display: inline-block;
     transition: transform 0.5s ease;
 }
 
-.menu ul li a:hover {
-  color: #B8CFCE;
-  transform: scale(1.2); 
+.nav-links li a:hover {
+  color: #ADB2D4;
+  transform: scale(1.2);
 
 }
-
+.menu-icon { display: none; font-size: 26px; cursor: pointer; color: #333446; }
+.menu-icon .close-icon { display: none; } /* icono de cerrar oculto por defecto */
 .rainbow-text {
-  /* Create a conic gradient. */
-  /* Double percentages to avoid blur (#000 10%, #fff 10%, #fff 20%, ...). */
   background: #efeff3;
   background-color: #d1ceda;
   background: conic-gradient(
-    #eeeded 16.666%, 
-    #aedcbd 16.666%, 
-    #ccc2bf 33.333%, 
-    #f8efe9 33.333%, 
-    #dadde9 50%, 
-    #8B9862 50%, 
-    #8B9862 66.666%, 
-    #8598c2 66.666%, 
-    #cfdeff 83.333%, 
+    rgba(51, 52, 70, 0.8) 16.666%, 
+    #1e0ead 16.666%, 
+    #1b1630 33.333%, 
+    #100227 33.333%, 
+    #0b1954 50%, 
+    #130536 50%, 
+    #2c1b4e 66.666%, 
+    #030b1e 66.666%, 
+    #264c9e 83.333%, 
     #A7489B 83.333%);
   
-  /* Set thee background size and repeat properties. */
+  
   background-size: 57%;
   background-repeat: repeat;
   
-  /* Use the text as a mask for the background. */
-  /* This will show the gradient as a text color rather than element bg. */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
   
-  /* Animate the text when loading the element. */
-  /* This animates it on page load and when hovering out. */
   animation: rainbow-text-animation-rev 0.5s ease forwards;
 
   cursor: pointer;
 }
 
-/* Add animation on hover. */
 .rainbow-text:hover {
   animation: rainbow-text-animation 0.5s ease forwards;
 }
@@ -118,8 +120,6 @@ text-decoration: none;}
   }
 }
 
-/* Move the background and make it smaller. */
-/* Animation shown when entering the page and after the hover animation. */
 @keyframes rainbow-text-animation-rev {
   0% {
     background-size: 300%;
@@ -133,4 +133,34 @@ text-decoration: none;}
     background-size: 57%;
     background-position: 0 0;
   }
+}
+@media (max-width: 768px) {
+ 
+  .menu { padding: 0 16px; }
+
+  .menu-icon { display: inline-block; }
+
+  .menu ul {
+    display: none;
+    position: absolute;
+    top: 100px;    
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #333446; 
+    flex-direction: column;
+    gap: 0;
+    padding: 12px 0;
+    align-items: center;
+  }
+
+  .menu ul li { width: 100%; margin: 0; text-align: center; }
+  .menu ul li a { display: block; padding: 12px 20px; color: #EAEFEF; }
+
+  #menu-toggle:checked + .menu-icon + ul {
+    display: flex;
+  }
+
+  #menu-toggle:checked + .menu-icon .fa-bars { display: none; }
+  #menu-toggle:checked + .menu-icon .close-icon { display: inline-block; color: #333446; }
 }
